@@ -15,5 +15,5 @@ class AlbumItem(scrapy.Item):
     author = scrapy.Field()
 
 
-# class SongItem(scrapy.Item):
-#     link = scrapy.Field()
+class SongItem(scrapy.Item):
+    link = scrapy.Field()
