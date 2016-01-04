@@ -19,7 +19,6 @@ class SongSpider(scrapy.Spider):
             link_songs = []
     start_urls = []
     for i in xrange(0, len(link_songs)):
-        print link_songs[i]['link'][0]
         start_urls.append(str(link_songs[i]['link'][0]))
 
     def parse(self, response):
