@@ -10,5 +10,7 @@ This application using scrapy framework to parse html and get link to download m
 - Scrapy 1.0.4 or higher
 
 ## Instruction
+- python CreateJsonFile.py
 - scrapy crawl album -o ListSong.json
 - scrapy crawl song -o DownloadLink.json
+- python DownloadSong.py
