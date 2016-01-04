@@ -12,15 +12,15 @@ class SongSpider(scrapy.Spider):
     name = "song"
     allowed_domains = [HOST]
     # Create a list of song link based on JSON file created by AlbumCrawler
-    with open("ListSong.json") as list_song_file:
+    with open("LinkSongs.json") as list_song_file:
         try:
-            list_song = json.load(list_song_file)
+            link_songs = json.load(list_song_file)
         except ValueError:
-            list_song = []
+            link_songs = []
     start_urls = []
-    for i in xrange(0, len(list_song)):
-        print list_song[i]['link'][0]
-        start_urls.append(str(list_song[i]['link'][0]))
+    for i in xrange(0, len(link_songs)):
+        print link_songs[i]['link'][0]
+        start_urls.append(str(link_songs[i]['link'][0]))
 
     def parse(self, response):
         for sel in response.xpath('//div[@id="_player"]'):
