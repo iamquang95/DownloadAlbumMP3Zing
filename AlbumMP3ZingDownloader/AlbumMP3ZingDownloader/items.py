@@ -10,10 +10,10 @@ class DmozItem(scrapy.Item):
 
 
 class AlbumItem(scrapy.Item):
-    title = scrapy.Field()
     link = scrapy.Field()
+
+
+class SongItem(AlbumItem):
+    title = scrapy.Field()
     author = scrapy.Field()
-
-
-class SongItem(scrapy.Item):
     link = scrapy.Field()

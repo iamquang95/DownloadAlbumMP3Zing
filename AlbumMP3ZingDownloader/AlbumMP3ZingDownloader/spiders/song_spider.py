@@ -12,7 +12,6 @@ class SongSpider(scrapy.Spider):
     name = "song"
     allowed_domains = [HOST]
     # Create a list of song link based on JSON file created by AlbumCrawler
-    # Uncomment after crawl album
     with open("ListSong.json") as list_song_file:
         try:
             list_song = json.load(list_song_file)
@@ -25,6 +24,13 @@ class SongSpider(scrapy.Spider):
 
     def parse(self, response):
         for sel in response.xpath('//div[@id="_player"]'):
-            item = SongItem()
-            item['link'] = sel.xpath(SongSpider.TAB_CONTAIN_XML).extract()
-            yield item
+            for song_uml in sel.xpath(SongSpider.TAB_CONTAIN_XML):
+                url = song_uml.extract()
+                yield scrapy.Request(url, callback=self.parse_dir_song)
+
+    def parse_dir_song(self, response):
+        item = SongItem()
+        item['title'] = response.xpath("//title/text()").extract()
+        item['author'] = response.xpath("//performer/text()").extract()
+        item['link'] = response.xpath("//source/text()").extract()
+        yield item
