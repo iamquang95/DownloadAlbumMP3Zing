@@ -1,11 +1,11 @@
 # Create 2 json files to let spider write data
 
 # For album_spider
-f = open("LinkSongs.json", "w")
-f.close()
+with open("LinkSongs.json", "w") as f:
+    pass
 # For song_spider
-f = open("Songs.json", "w")
-f.close()
+with open("Songs.json", "w") as f:
+    pass
 
 print "Initialization"
 print "----------------------------------------"

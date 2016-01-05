@@ -8,7 +8,7 @@ class AlbumItem(scrapy.Item):
     album = scrapy.Field()
 
 
-class SongItem(AlbumItem):
+class SongItem(scrapy.Item):
     title = scrapy.Field()
     author = scrapy.Field()
     link = scrapy.Field()

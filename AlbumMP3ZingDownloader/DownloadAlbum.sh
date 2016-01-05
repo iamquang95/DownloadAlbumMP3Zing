@@ -1,4 +1,4 @@
-python CreateJsonFile.py
+python create_json_file.py
 scrapy crawl album -o LinkSongs.json --nolog
 scrapy crawl song -o Songs.json --nolog
-python DownloadSong.py
+python download_song.py
