@@ -10,14 +10,23 @@ This application using scrapy framework to parse html and get link to download m
 - Scrapy 1.0.4 or higher
 
 ## Instruction
-### For Linux user
-- Just run the DownloadAlbum.sh
+### Installation
+- You should install pip
+- pip install -r requirements.txt
 
-### Other OS user
-- python CreateJsonFile.py
-- scrapy crawl album -o LinkSongs.json
-- scrapy crawl song -o Songs.json
-- python DownloadSong.py
+### Running
+- cd AlbumMp3ZingDownloader
+- Add all album link you want to download into link_album.txt
+
+#### For Linux user
+- Just run the ./DownloadAlbum.sh
+
+#### Other OS user
+- python create_json_file.py
+- scrapy crawl album -o json_files/LinkSongs.json --nolog
+- scrapy crawl song -o json_files/Songs.json --nolog
+- python download_song.py
+
 
 ## Update
 ### Version 0.1
