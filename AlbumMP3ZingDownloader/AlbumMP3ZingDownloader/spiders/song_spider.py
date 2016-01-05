@@ -21,6 +21,8 @@ class SongSpider(scrapy.Spider):
     for i in xrange(0, len(link_songs)):
         start_urls.append(str(link_songs[i]['link'][0]))
 
+    i_url = 0
+
     def parse(self, response):
         for sel in response.xpath('//div[@id="_player"]'):
             for song_uml in sel.xpath(SongSpider.TAB_CONTAIN_XML):
@@ -32,4 +34,7 @@ class SongSpider(scrapy.Spider):
         item['title'] = response.xpath("//title/text()").extract()
         item['author'] = response.xpath("//performer/text()").extract()
         item['link'] = response.xpath("//source/text()").extract()
+        item['album'] = SongSpider.link_songs[SongSpider.i_url]['album']
+        SongSpider.i_url += 1
+        print "Number of link songs crawled: " + str(SongSpider.i_url)
         yield item
