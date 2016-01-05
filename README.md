@@ -12,6 +12,12 @@ This application using scrapy framework to parse html and get link to download m
 ## Instruction
 ### Installation
 - You should install pip
+
+#### Linux
+- pip install -r requirements.txt
+
+#### Windows
+- pip install lxml-3.4.4-cp27-none-win_amd64.whl
 - pip install -r requirements.txt
 
 ### Running
