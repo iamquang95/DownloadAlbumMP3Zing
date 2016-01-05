@@ -3,14 +3,12 @@ import urllib
 import os
 
 
-with open("Songs.json") as songs_file:
-    songs = json.load(songs_file)
-    # songs = json.load(songs_file)
-    # try:
-    #     songs = json.load(songs_file)
-    # except ValueError:
-    #     print "Error"
-    #     songs = []
+with open("json_files/Songs.json") as songs_file:
+    try:
+        songs = json.load(songs_file)
+    except ValueError:
+        print "Error when read json file after crawling"
+        songs = []
 
 
 print "Finish crawling download links"

@@ -12,7 +12,7 @@ class SongSpider(scrapy.Spider):
     name = "song"
     allowed_domains = [HOST]
     # Create a list of song link based on JSON file created by AlbumCrawler
-    with open("LinkSongs.json") as list_song_file:
+    with open("json_files/LinkSongs.json") as list_song_file:
         try:
             link_songs = json.load(list_song_file)
         except ValueError:

@@ -5,9 +5,8 @@ from AlbumMP3ZingDownloader.items import AlbumItem
 class AlbumSpider(scrapy.Spider):
     name = "album"
     allowed_domains = ["mp3.zing.vn"]
-    start_urls = [
-        "http://mp3.zing.vn/album/Really-Love-You-Single-Noo-Phuoc-Thinh/ZWZCWOUO.html",
-    ]
+    with open("link_album.txt", "r") as f:
+        start_urls = f.read().split()
 
     def parse(self, response):
         album_name = response.xpath('//div[@class="info-content"]/h1/text()')
