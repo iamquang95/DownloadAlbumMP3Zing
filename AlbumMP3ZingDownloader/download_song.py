@@ -1,6 +1,7 @@
 import json
 import urllib
 import os
+from unicodedata import normalize
 
 
 with open("json_files/Songs.json") as songs_file:
@@ -19,7 +20,6 @@ download_song_count = 0
 
 for song in songs:
     folder_path = song['album']
-    print folder_path
     if not os.path.exists(folder_path):
         original_umask = os.umask(0)
         os.makedirs(folder_path, 0777)
@@ -31,13 +31,11 @@ for song in songs:
     # filename = folder_path + "/" + title + " " + author + ".mp3"
     filename = ("%s/%s-%s.mp3") % (folder_path, title, author)
     # Download file using urllib (can upgrade using urllib2)
-    # f = open(filename, "wb")
-    # print "Downloading " + filename
-    # f.write(urllib.urlopen(mp3_link).read())
-    # f.close()
     with open(filename, "wb") as f:
-        print "Downloading " + filename
+        song_name_ascii = normalize('NFKD', filename).encode('ascii', 'ignore')
+        print "Downloading " + song_name_ascii
         f.write(urllib.urlopen(mp3_link).read())
+
     download_song_count += 1
     print "     Downloaded %s/%s" % (download_song_count, len(songs))
     print "----------------------------------------"
